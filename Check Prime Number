@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main() {
+    int n, i, isPrime = 1;
+
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    if (n < 2) {
+        isPrime = 0; // 0 এবং 1 প্রাইম নয়
+    } else {
+        for (i = 2; i * i <= n; i++) {
+            if (n % i == 0) {
+                isPrime = 0; // ভাগ হয়ে গেছে, তাই প্রাইম নয়
+                break;
+            }
+        }
+    }
+
+    if (isPrime == 1)
+        printf("%d is a Prime number\n", n);
+    else
+        printf("%d is NOT a Prime number\n", n);
+
+    return 0;
+}
