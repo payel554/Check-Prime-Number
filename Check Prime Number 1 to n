@@ -1,26 +1,29 @@
 #include <stdio.h>
 
 int main() {
-    int n, i, isPrime = 1;
+    int n, i, j, isPrime;
 
-    printf("Enter a number: ");
+    printf("Enter the value of n: ");
     scanf("%d", &n);
 
-    if (n < 2) {
-        isPrime = 0; // 0 এবং 1 প্রাইম নয়
-    } else {
-        for (i = 2; i * i <= n; i++) {
-            if (n % i == 0) {
-                isPrime = 0; // ভাগ হয়ে গেছে, তাই প্রাইম নয়
+    printf("Prime numbers between 1 and %d are:\n", n);
+
+    for (i = 2; i <= n; i++) {
+        isPrime = 1; // ধরে নিচ্ছি i প্রাইম
+
+        for (j = 2; j * j <= i; j++) {
+            if (i % j == 0) {
+                isPrime = 0; // ভাগ হচ্ছে → প্রাইম না
                 break;
             }
         }
+
+        if (isPrime) {
+            printf("%d ", i);
+        }
     }
 
-    if (isPrime == 1)
-        printf("%d is a Prime number\n", n);
-    else
-        printf("%d is NOT a Prime number\n", n);
-
+    printf("\n");
     return 0;
 }
+
